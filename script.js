@@ -1,8 +1,8 @@
 const title = "Yoga skunk",
     screens = "Простые, Сложные, Интерактивные",
-    screenPrice = "Стоимость вёрскти экранов " + 15000 + " рублей",
+    screenPrice = 15000,
     rollback = 10,
-    fullPrice = "Стоимость разработки сайта " + 100000 + " рублей",
+    fullPrice = 100000,
     adaptive = true;
 
 console.log(typeof title);
@@ -10,5 +10,5 @@ console.log(typeof screenPrice);
 console.log(typeof adaptive);
 console.log(screens.length);
 console.log(screens.toLowerCase().split(", "));
-console.log(screenPrice);
-console.log("Откат посреднику за работу " + 10000 * (10 / 100) + " рублей");
+console.log("Стоимость вёрскти экранов " + screenPrice + " рублей");
+console.log("Откат посреднику за работу " + fullPrice * (rollback / 100) + " рублей");
