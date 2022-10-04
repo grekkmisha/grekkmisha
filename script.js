@@ -1,15 +1,15 @@
 'use strict';
-let title = prompt("Как называется Ваш проект?", "Yoga skunk"),
+const title = prompt("Как называется Ваш проект?", "Yoga skunk"),
     screens = prompt("Какие типы экранов нужно разработать?", "Простые, Сложные, Интерактивные"),
     screenPrice = +prompt("Сколько будет стоить данная работа?", "15000"),
     rollback = 10,
-    fullPrice = 100000,
-    adaptive = prompt("Нужен ли адаптив на сайте?", "true/false"),
+    adaptive = confirm("Нужен ли адаптив на сайте?"),
     service1 = prompt("Какой дополнительный тип услуги нужен?", "Тестирование"),
     servicePrice1 = +prompt("Сколько это будет стоить?", "5000"),
     service2 = prompt("Какой дополнительный тип услуги нужен?", "CMS"),
     servicePrice2 = +prompt("Сколько это будет стоить?", "7000"),
-    servicePercentPrice;
+    fullPrice = screenPrice + servicePrice1 + servicePrice2,
+    servicePercentPrice = fullPrice - (fullPrice * (rollback / 100));
 
 console.log(typeof title);
 console.log(typeof screenPrice);
@@ -21,13 +21,13 @@ console.log("Откат посреднику за работу " + fullPrice * (
 console.log(title);
 console.log(screens);
 console.log(screenPrice);
-console.log(!!adaptive);
+console.log(adaptive);
 console.log(service1);
 console.log(servicePrice1);
 console.log(service2);
 console.log(servicePrice2);
-console.log(fullPrice = screenPrice + servicePrice1 + servicePrice2);
-console.log(servicePercentPrice = fullPrice - (fullPrice * (rollback / 100)));
+console.log(fullPrice);
+console.log(servicePercentPrice);
 
 switch (true) {
     case fullPrice > 30000:
