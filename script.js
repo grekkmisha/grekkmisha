@@ -1,5 +1,5 @@
 'use strict';
-const title = prompt("Как называется Ваш проект?", "Yoga skunk"),
+let title = prompt("Как называется Ваш проект?", "Yoga skunk"),
     screens = prompt("Какие типы экранов нужно разработать?", "Простые, Сложные, Интерактивные"),
     screenPrice = +prompt("Сколько будет стоить данная работа?", "15000"),
     rollback = 10,
@@ -11,34 +11,59 @@ const title = prompt("Как называется Ваш проект?", "Yoga s
     fullPrice = screenPrice + servicePrice1 + servicePrice2,
     servicePercentPrice = fullPrice - (fullPrice * (rollback / 100));
 
-console.log(typeof title);
-console.log(typeof screenPrice);
-console.log(typeof adaptive);
-console.log(screens.length);
-console.log(screens.toLowerCase().split(", "));
-console.log("Стоимость вёрскти экранов " + screenPrice + " рублей");
-console.log("Откат посреднику за работу " + fullPrice * (rollback / 100) + " рублей");
-console.log(title);
-console.log(screens);
-console.log(screenPrice);
-console.log(adaptive);
-console.log(service1);
-console.log(servicePrice1);
-console.log(service2);
-console.log(servicePrice2);
-console.log(fullPrice);
-console.log(servicePercentPrice);
+const showTypeOf = function (variable) {
+    console.log(variable, typeof variable);
+};
 
-switch (true) {
-    case fullPrice > 30000:
-        console.log("Скидка 10%");
-        break;
-    case fullPrice > 15000:
-        console.log("Скидка 5%");
-        break;
-    case fullPrice >= 0:
-        console.log("Скидка не предусмотрена");
-        break;
-    default:
-        console.log("Что-то пошло не так");
+const getRollbackMessage = function (price) {
+    switch (true) {
+        case price > 30000:
+            return "Скидка 10%";
+        case price > 15000:
+            return "Скидка 5%";
+        case price >= 0:
+            return "Скидка не предусмотрена";
+        default:
+            return "Что-то пошло не так";
+    }
+};
+
+const getAllServicePrices = function (price1, price2) {
+    return price1 + price2;
+};
+
+function getFullPrice(price1, price2) {
+    return price1 + price2;
 }
+
+const getTitle = function (name) {
+    return name.trim().toLowerCase();
+};
+
+const setFirstLetterUpperCase = function (name1) {
+    return name1.charAt(0).toUpperCase() + name1.slice(1);
+};
+
+const getServicePercentPrices = function (cost) {
+    return cost;
+};
+
+showTypeOf(title);
+showTypeOf(screenPrice);
+showTypeOf(adaptive);
+
+getAllServicePrices(servicePrice1, servicePrice2);
+const allServicePrices = getAllServicePrices(servicePrice1, servicePrice2);
+
+getFullPrice(screenPrice, allServicePrices);
+
+const result = getTitle(title);
+const finalResult = setFirstLetterUpperCase(result);
+
+getServicePercentPrices(servicePercentPrice);
+servicePercentPrice = getServicePercentPrices(servicePercentPrice);
+
+console.log(screens.toLowerCase().split(", "));
+console.log(getRollbackMessage(fullPrice));
+console.log(getAllServicePrices(servicePrice1, servicePrice2));
+console.log(servicePercentPrice);
