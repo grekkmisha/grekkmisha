@@ -42,7 +42,7 @@ const getTitle = function (name) {
 };
 
 const getServicePercentPrices = function () {
-    return getFullPrice(screenPrice, allServicePrices) - fullPrice * (rollback / 100);
+    return fullPrice - fullPrice * (rollback / 100);
 };
 
 showTypeOf(title);
