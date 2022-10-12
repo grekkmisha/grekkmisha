@@ -18,11 +18,15 @@ const asking = function () {
     title = prompt("Как называется Ваш проект?", "Yoga skunk");
     screens = prompt("Какие типы экранов нужно разработать?", "Простые, Сложные, Интерактивные");
 
-    screenPrice = prompt("Сколько будет стоить данная работа?");
+    // screenPrice = prompt("Сколько будет стоить данная работа?");
 
-    while (!isNumber(screenPrice)) {
-        screenPrice = prompt("Сколько будет стоить данная работа?");
-    }
+    // while (!isNumber(screenPrice)) {
+    //     screenPrice = prompt("Сколько будет стоить данная работа?");
+    // }
+
+    do {
+        screenPrice = Number(prompt("Сколько будет стоить данная работа?"));
+    } while (!isNumber(screenPrice));
 
     adaptive = confirm("Нужен ли адаптив на сайте?");
 };
@@ -38,7 +42,14 @@ const getAllServicePrices = function () {
             prompt("Какой дополнительный тип услуги нужен?", "CMS");
         }
 
-        sum += +prompt("Сколько это будет стоить?", "5000");
+        let total = prompt("Сколько это будет стоить?");
+
+        while (!isNumber(total)) {
+            total = prompt("Сколько это будет стоить?");
+        }
+
+        sum += +total;
+
     }
     return sum;
 };
@@ -84,6 +95,5 @@ showTypeOf(screenPrice);
 showTypeOf(adaptive);
 
 console.log("allServicePrices", allServicePrices);
-
 console.log(screens.toLowerCase().split(", "));
 console.log(getRollbackMessage(fullPrice));
