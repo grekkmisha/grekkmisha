@@ -42,7 +42,7 @@ const getAllServicePrices = function () {
             prompt("Какой дополнительный тип услуги нужен?", "CMS");
         }
 
-        let total = prompt("Сколько это будет стоить?");
+        let total;
 
         while (!isNumber(total)) {
             total = prompt("Сколько это будет стоить?");
