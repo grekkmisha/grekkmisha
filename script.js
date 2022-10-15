@@ -1,34 +1,31 @@
 'use strict';
-let title,
-    screens,
-    screenPrice,
-    adaptive,
-    rollback = 10,
-    allServicePrices,
-    fullPrice,
-    servicePercentPrice,
-    service1,
-    service2;
+
+const appData = {
+    title: "",
+    screens: "",
+    screenPrice: 0,
+    adaptive: true,
+    rollback: 10,
+    allServicePrices: 0,
+    fullPrice: 0,
+    servicePercentPrice: 0,
+    service1: "",
+    service2: "",
+
+    asking: function () {
+        appData.title = prompt("Как называется Ваш проект?", "Yoga skunk");
+        appData.screens = prompt("Какие типы экранов нужно разработать?", "Простые, Сложные, Интерактивные");
+
+        do {
+            appData.screenPrice = Number(prompt("Сколько будет стоить данная работа?"));
+        } while (!isNumber(appData.screenPrice));
+
+        appData.adaptive = confirm("Нужен ли адаптив на сайте?");
+    },
+};
 
 const isNumber = function (num) {
     return (!isNaN(parseFloat(num)) && isFinite(num));
-};
-
-const asking = function () {
-    title = prompt("Как называется Ваш проект?", "Yoga skunk");
-    screens = prompt("Какие типы экранов нужно разработать?", "Простые, Сложные, Интерактивные");
-
-    // screenPrice = prompt("Сколько будет стоить данная работа?");
-
-    // while (!isNumber(screenPrice)) {
-    //     screenPrice = prompt("Сколько будет стоить данная работа?");
-    // }
-
-    do {
-        screenPrice = Number(prompt("Сколько будет стоить данная работа?"));
-    } while (!isNumber(screenPrice));
-
-    adaptive = confirm("Нужен ли адаптив на сайте?");
 };
 
 const getAllServicePrices = function () {
@@ -36,34 +33,28 @@ const getAllServicePrices = function () {
 
     for (let i = 0; i < 2; i++) {
 
+        let total;
+
         if (i === 0) {
             prompt("Какой дополнительный тип услуги нужен?", "Тестирование");
         } else if (i === 1) {
             prompt("Какой дополнительный тип услуги нужен?", "CMS");
         }
 
-        let total;
-
         while (!isNumber(total)) {
             total = prompt("Сколько это будет стоить?");
         }
-
         sum += +total;
-
     }
     return sum;
 };
 
-const showTypeOf = function (variable) {
-    console.log(variable, typeof variable);
-};
-
 const getFullPrice = function () {
-    return screenPrice + allServicePrices;
+    return appData.screenPrice + appData.allServicePrices;
 };
 
 const getServicePercentPrices = function () {
-    return fullPrice - fullPrice * (rollback / 100);
+    return appData.fullPrice - appData.fullPrice * (appData.rollback / 100);
 };
 
 const getTitle = function (name) {
@@ -84,16 +75,11 @@ const getRollbackMessage = function (price) {
     }
 };
 
-asking();
-allServicePrices = getAllServicePrices();
-fullPrice = getFullPrice();
-servicePercentPrice = getServicePercentPrices();
-title = getTitle(title);
+appData.asking();
+appData.allServicePrices = getAllServicePrices();
+appData.fullPrice = getFullPrice();
+appData.servicePercentPrice = getServicePercentPrices();
+appData.title = getTitle(appData.title);
 
-showTypeOf(title);
-showTypeOf(screenPrice);
-showTypeOf(adaptive);
-
-console.log("allServicePrices", allServicePrices);
-console.log(screens.toLowerCase().split(", "));
-console.log(getRollbackMessage(fullPrice));
+console.log(appData.fullPrice);
+console.log(appData.servicePercentPrice);
