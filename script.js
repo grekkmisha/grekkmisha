@@ -110,14 +110,3 @@ const appData = {
     },
 };
 appData.start();
-
-// let price = 0;
-
-// const isNumber = function (num) {
-//     return !isNaN(num);
-// };
-// do {
-//     price = prompt("Какой дополнительный тип услуги нужен?");
-// } while (!isNaN(price));
-
-// console.log(price);
