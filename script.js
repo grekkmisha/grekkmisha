@@ -24,12 +24,23 @@ const appData = {
         return (!isNaN(parseFloat(num)) && isFinite(num));
     },
 
+    isString: function (str) {
+        return !isNaN(str);
+    },
+
     asking: function () {
-        appData.title = prompt("Как называется Ваш проект?", "Калькулятор вёрстки");
+
+        while (appData.isString(appData.title)) {
+            appData.title = prompt("Как называется Ваш проект?", "Калькулятор вёрстки");
+        }
 
         for (let i = 0; i < 2; i++) {
-            let name = prompt("Какие типы экранов нужно разработать?");
+            let name = "";
             let price = 0;
+
+            do {
+                name = prompt("Какие типы экранов нужно разработать?");
+            } while (appData.isString(name));
 
             do {
                 price = Number(prompt("Сколько будет стоить данная работа?"));
@@ -40,8 +51,12 @@ const appData = {
 
         for (let i = 0; i < 2; i++) {
 
-            let name = prompt("Какой дополнительный тип услуги нужен?");
+            let name = "";
             let price;
+
+            while (appData.isString(name)) {
+                name = prompt("Какой дополнительный тип услуги нужен?");
+            }
 
             while (!appData.isNumber(price)) {
                 price = prompt("Сколько это будет стоить?");
@@ -60,9 +75,6 @@ const appData = {
         for (let key in appData.services) {
             appData.allServicePrices += appData.services[key];
         }
-    },
-
-    getAllServicePrices: function () {
     },
 
     getFullPrice: function () {
@@ -98,3 +110,14 @@ const appData = {
     },
 };
 appData.start();
+
+// let price = 0;
+
+// const isNumber = function (num) {
+//     return !isNaN(num);
+// };
+// do {
+//     price = prompt("Какой дополнительный тип услуги нужен?");
+// } while (!isNaN(price));
+
+// console.log(price);
