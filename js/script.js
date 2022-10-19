@@ -1,17 +1,18 @@
 'use strict';
 
-const calc = document.getElementsByTagName("h1"),
-    buttons = document.getElementsByClassName("handler_btn"),
-    plus = document.querySelector(".screen-btn"),
+const calc = document.getElementsByTagName("h1")[0],
+    startButton = document.getElementsByClassName("handler_btn")[0],
+    resetButton = document.getElementsByClassName("handler_btn")[1],
+    plusButton = document.querySelector(".screen-btn"),
     otherItemPercent = document.querySelectorAll(".percent"),
     otherItemNumber = document.querySelectorAll(".number"),
-    input = document.querySelector(".rollback > div > input"),
-    span = document.querySelector(".rollback > div > span"),
-    layoutCost = document.getElementsByClassName("total-input"),
-    numberOfScreens = document.getElementsByClassName("total-input"),
-    addServicesCost = document.getElementsByClassName("total-input"),
-    totalCost = document.getElementsByClassName("total-input"),
-    costWithRollback = document.getElementsByClassName("total-input");
+    inputTypeRange = document.querySelector(".rollback input"),
+    rangeValue = document.querySelector(".rollback .range-value"),
+    layoutCost = document.getElementsByClassName("total-input")[0],
+    numberOfScreens = document.getElementsByClassName("total-input")[1],
+    addServicesCost = document.getElementsByClassName("total-input")[2],
+    totalCost = document.getElementsByClassName("total-input")[3],
+    costWithRollback = document.getElementsByClassName("total-input")[4];
 let screens = document.querySelectorAll(".screen");
 
 const appData = {
@@ -125,16 +126,17 @@ const appData = {
 };
 // appData.start();
 
-console.log(calc[0]);
-console.log(buttons);
-console.log(plus);
+console.log(calc);
+console.log(startButton);
+console.log(resetButton);
+console.log(plusButton);
 console.log(otherItemPercent);
 console.log(otherItemNumber);
-console.log(input);
-console.log(span);
-console.log(layoutCost[0]);
-console.log(numberOfScreens[1]);
-console.log(addServicesCost[2]);
-console.log(totalCost[3]);
-console.log(costWithRollback[4]);
+console.log(inputTypeRange);
+console.log(rangeValue);
+console.log(layoutCost);
+console.log(numberOfScreens);
+console.log(addServicesCost);
+console.log(totalCost);
+console.log(costWithRollback);
 console.log(screens);
