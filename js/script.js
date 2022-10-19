@@ -1,18 +1,17 @@
 'use strict';
 
 const calc = document.getElementsByTagName("h1")[0],
-    startButton = document.getElementsByClassName("handler_btn")[0],
-    resetButton = document.getElementsByClassName("handler_btn")[1],
+    [startButton, resetButton] = document.getElementsByClassName("handler_btn"),
     plusButton = document.querySelector(".screen-btn"),
     otherItemPercent = document.querySelectorAll(".percent"),
     otherItemNumber = document.querySelectorAll(".number"),
     inputTypeRange = document.querySelector(".rollback input"),
     rangeValue = document.querySelector(".rollback .range-value"),
-    layoutCost = document.getElementsByClassName("total-input")[0],
-    numberOfScreens = document.getElementsByClassName("total-input")[1],
-    addServicesCost = document.getElementsByClassName("total-input")[2],
-    totalCost = document.getElementsByClassName("total-input")[3],
-    costWithRollback = document.getElementsByClassName("total-input")[4];
+    [layoutCost,
+        numberOfScreens,
+        addServicesCost,
+        totalCost,
+        costWithRollback] = document.getElementsByClassName("total-input");
 let screens = document.querySelectorAll(".screen");
 
 const appData = {
@@ -127,8 +126,7 @@ const appData = {
 // appData.start();
 
 console.log(calc);
-console.log(startButton);
-console.log(resetButton);
+console.log(startButton, resetButton);
 console.log(plusButton);
 console.log(otherItemPercent);
 console.log(otherItemNumber);
