@@ -12,12 +12,7 @@ const title = document.getElementsByTagName("h1")[0],
         addServicesCost,
         totalCost,
         costWithRollback] = document.getElementsByClassName("total-input");
-// screenInput = document.querySelector(".screen input"),
-// screenSelect = document.querySelector(".screen select");
 let screens = document.querySelectorAll(".screen");
-
-// console.dir(screenSelect);
-// console.dir(screenInput);
 
 const appData = {
     title: "",
@@ -39,9 +34,10 @@ const appData = {
                 appData.start();
             }
         });
-        // startButton.addEventListener('click', appData.start);
         plusButton.addEventListener('click', appData.addScreenBlock);
         inputTypeRange.addEventListener('input', appData.changerRollback);
+        inputTypeRange.setAttribute('value', '10');
+        rangeValue.textContent = '10' + '%';
     },
 
     validation: function () {
@@ -118,8 +114,11 @@ const appData = {
     },
 
     addScreenBlock: function () {
-        const cloneScreen = screens[0].cloneNode(true);
+        const cloneScreen = screens[screens.length - 1].cloneNode(true),
+            inputValue = cloneScreen.querySelector('.screen input');
+        inputValue.value = '';
         screens[screens.length - 1].after(cloneScreen);
+        appData.addScreens();
     },
 
     addPrices: function () {
