@@ -118,7 +118,7 @@ const appData = {
             inputValue = cloneScreen.querySelector('.screen input');
         inputValue.value = '';
         screens[screens.length - 1].after(cloneScreen);
-        appData.addScreens();
+        screens = [...screens, cloneScreen];
     },
 
     addPrices: function () {
