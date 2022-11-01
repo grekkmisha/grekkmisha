@@ -19,7 +19,7 @@ const appData = {
     screens: [],
     screenPrice: 0,
     adaptive: true,
-    rollback: 10,
+    rollback: 0,
     servicePricesPercent: 0,
     servicePricesNumber: 0,
     fullPrice: 0,
@@ -32,12 +32,13 @@ const appData = {
         startButton.addEventListener('click', function () {
             if (appData.validation() === true) {
                 appData.start();
+            } else {
+                alert('Неообходимо выбрать тип экранов/их количество');
             }
         });
         plusButton.addEventListener('click', appData.addScreenBlock);
         inputTypeRange.addEventListener('input', appData.changerRollback);
-        inputTypeRange.setAttribute('value', '10');
-        rangeValue.textContent = '10' + '%';
+        rangeValue.textContent = '0' + '%';
     },
 
     validation: function () {
@@ -75,8 +76,6 @@ const appData = {
     },
 
     addScreens: function () {
-        screens = document.querySelectorAll(".screen");
-
         screens.forEach(function (screen, index) {
             const select = screen.querySelector('select'),
                 input = screen.querySelector('input'),
@@ -118,7 +117,7 @@ const appData = {
             inputValue = cloneScreen.querySelector('.screen input');
         inputValue.value = '';
         screens[screens.length - 1].after(cloneScreen);
-        screens = [...screens, cloneScreen];
+        screens = document.querySelectorAll(".screen");
     },
 
     addPrices: function () {
